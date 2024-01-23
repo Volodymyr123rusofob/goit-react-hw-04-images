@@ -79,7 +79,6 @@ class App extends Component {
     const { item, loading, imgDetails, modalOpen } = this.state;
 
     const isItem = Boolean(item.length);
-
     return (
       <div className={style.box}>
         <Searchbar onSubmit={hendleSearch} />
@@ -90,7 +89,7 @@ class App extends Component {
             Load More
           </Button>
         )}
-        {modalOpen && <Modal close={closeModal}>{imgDetails}</Modal>}
+        {modalOpen && <Modal close={closeModal} img={imgDetails}></Modal>}
       </div>
     );
   }
