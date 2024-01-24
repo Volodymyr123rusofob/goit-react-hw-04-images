@@ -60,8 +60,9 @@ const App = () => {
   return (
     <div className={style.box}>
       <Searchbar onSubmit={hendleSearch} />
-      {isItem && <ImageGallery items={item} showModal={showModal} />}
+      {error && <p className={style.error}>{error}</p>}
       <Loader loading={loading} />
+      {isItem && <ImageGallery items={item} showModal={showModal} />}
       {isItem && (
         <Button onClick={loadMore} type="button">
           Load More

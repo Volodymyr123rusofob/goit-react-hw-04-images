@@ -15,3 +15,7 @@ ul {
   margin-top: 20px;
   font-size: 24px;
 }
+
+.error {
+  color: red;
+}
