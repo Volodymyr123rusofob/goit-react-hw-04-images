@@ -20,22 +20,22 @@ const App = () => {
 
   useEffect(() => {
     if (search === '') return;
+    const fetchImage = async () => {
+      setLoading(true);
+      try {
+        const { data } = await searchImg(search, page);
+        setIsItem(true);
+        const array = data.hits;
+        setItem(prevItems => [...prevItems, ...array]);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchImage();
   }, [search, page]);
-
-  const fetchImage = async () => {
-    setLoading(true);
-    try {
-      const { data } = await searchImg(search, page);
-      setIsItem(true);
-      const array = data.hits;
-      setItem(prevItems => [...prevItems, ...array]);
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const loadMore = () => {
     setPage(page + 1);
@@ -55,7 +55,6 @@ const App = () => {
     setSearch(search);
     setItem([]);
     setPage(1);
-    console.log(item, page, search);
   };
   return (
     <div className={style.box}>
